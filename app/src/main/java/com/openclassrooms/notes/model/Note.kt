@@ -11,7 +11,7 @@ data class Note(
 )
 
 /**
- * Classe permettant de gérer une liste de notes.
+ * Classe permettant de gérer une liste de notes avec des opérations de base.
  */
 class NoteManager {
 
@@ -24,6 +24,33 @@ class NoteManager {
      */
     fun addNote(note: Note) {
         notes.add(note)
+    }
+
+    /**
+     * Supprime une note de la liste.
+     *
+     * @param note La note à supprimer.
+     * @return `true` si la note a été supprimée, `false` sinon.
+     */
+    fun removeNote(note: Note): Boolean {
+        return notes.remove(note)
+    }
+
+    /**
+     * Modifie une note existante par une nouvelle.
+     *
+     * @param oldNote La note à remplacer.
+     * @param newNote La nouvelle note.
+     * @return `true` si la modification a réussi, `false` si la note d’origine n’a pas été trouvée.
+     */
+    fun updateNote(oldNote: Note, newNote: Note): Boolean {
+        val index = notes.indexOf(oldNote)
+        return if (index != -1) {
+            notes[index] = newNote
+            true
+        } else {
+            false
+        }
     }
 
     /**
