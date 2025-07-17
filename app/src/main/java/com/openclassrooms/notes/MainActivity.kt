@@ -9,7 +9,8 @@ import com.openclassrooms.notes.repository.NotesRepository
 import com.openclassrooms.notes.widget.NoteItemDecoration
 import com.openclassrooms.notes.widget.NotesAdapter
 import kotlinx.coroutines.launch
-
+import com.openclassrooms.notes.widget.NoteViewModel
+import androidx.activity.viewModels
 /**
  * The main activity for the app.
  */
@@ -18,11 +19,12 @@ class MainActivity : AppCompatActivity() {
     /**
      * The binding for the main layout.
      */
+
+    private val noteViewModel: NoteViewModel by viewModels()
+
     private lateinit var binding: ActivityMainBinding
 
     private val notesAdapter = NotesAdapter(emptyList())
-
-    private val notesRepository = NotesRepository()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
      */
     private fun collectNotes() {
         lifecycleScope.launch {
-            notesRepository.notes.collect {
+            noteViewModel.notes.collect {
                 notesAdapter.updateNotes(it)
             }
         }
