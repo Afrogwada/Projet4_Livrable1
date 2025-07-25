@@ -3,11 +3,16 @@ package com.openclassrooms.notes.widget
 import androidx.lifecycle.ViewModel
 import com.openclassrooms.notes.model.Note
 import com.openclassrooms.notes.repository.NotesRepository
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.StateFlow
 
-class NoteViewModel : ViewModel() {
+/**
+ * ViewModel that exposes the list of notes to the UI.
+ */
+class NoteViewModel(private val repository: NotesRepository) : ViewModel() {
 
-    private val notesRepository = NotesRepository()
+    /**
+     * Public read-only StateFlow of notes.
+     */
 
-    val notes: Flow<List<Note>> = notesRepository.notes
+    val notes: StateFlow<List<Note>> = repository.notes
 }

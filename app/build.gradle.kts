@@ -50,6 +50,7 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.1")
     implementation ("androidx.activity:activity-ktx:1.9.0")
 
+
     // ViewModel & LiveData (compatible avec Kotlin 1.9 & Gradle 8.1)
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version")
     implementation("androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version")
