@@ -5,16 +5,15 @@ import com.openclassrooms.notes.service.LocalNotesApiService
 import com.openclassrooms.notes.service.NotesApiService
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import javax.inject.Inject
+import javax.inject.Singleton
 
 /**
  * Repository class for the notes.
  */
-class NotesRepository {
-
-    /**
-     * The API service for interacting with notes.
-     */
-    private val notesApiService: NotesApiService = LocalNotesApiService()
+class NotesRepository @Inject constructor(
+    private val notesApiService: NotesApiService
+) {
 
     /**
      * A flow that emits a list of all notes.
